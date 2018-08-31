@@ -19,7 +19,7 @@ class Payment extends Component {
     // const transactionId = parsedUrl.searchParams('transactionId');
   }
 
-  // STEP 3, AUTH PAYMENT
+  // STEP 3 AUTH PAYMENT
   handleSubmit = transactionId => {
     const request = `https://test.epayment.nets.eu/Netaxept/Process.aspx?merchantId=${MERCHANTID}&token=${TOKEN}&transactionId=${transactionId}&operation=AUTH `;
 
