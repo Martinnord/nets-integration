@@ -32,8 +32,8 @@ class Payment extends Component {
     const requestUrl = `https://test.epayment.nets.eu/Netaxept/Process.aspx?merchantId=${constants.MERCHANTID}&token=${constants.TOKEN}&transactionId=${transactionId}&transactionAmount=${constants.AMOUNT}&operation=CAPTURE`;
     fetch(requestUrl).then(result => {
       result.text().then(str => {
-        let processResponseDoc = new DOMParser().parseFromString(str, "application/xml");
-        this.setState({ capturePaymentData: processResponseDoc });
+        // let processResponseDoc = new DOMParser().parseFromString(str, "application/xml");
+        this.setState({ capturePaymentData: str });
         return this.processQueryOnTransaction(transactionId);
       })
     })
@@ -43,8 +43,8 @@ class Payment extends Component {
     const requestUrl = `https://test.epayment.nets.eu/Netaxept/Query.aspx?merchantId=${constants.MERCHANTID}&token=${constants.TOKEN}&transactionId=${transactionId}`;
     fetch(requestUrl).then(result => {
       result.text().then(str => {
-        let queryResponseDoc = new DOMParser().parseFromString(str, "application/xml");
-        this.setState({ queryOnTransactionData: queryResponseDoc })
+        // let queryResponseDoc = new DOMParser().parseFromString(str, "application/xml");
+        this.setState({ queryOnTransactionData: str })
       })
     })
   }
@@ -52,10 +52,6 @@ class Payment extends Component {
   render() {
     const { capturePaymentData, queryOnTransactionData } = this.state;
 
-    const parser = new XMLParser().parseFromString(queryOnTransactionData);
-
-    console.log(parser)
-    // TODO: SPIT OUT DATA
     return (
       <div className="App">
         <header className="App-header">
