@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './index.css';
-import App from './App';
-import Payment from './Payment';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import registerServiceWorker from "./registerServiceWorker";
+import Home from "./Home";
+import Payment from "./Payment";
+import "./index.css";
 
 ReactDOM.render(
   <Router>
-      <div>
-        <Route path="/" exact component={App}/>
-        <Route path="/payment" component={Payment}/>
-    </div>
-  </Router>, document.getElementById('root'));
+    <React.Fragment>
+      <Route path="/" exact component={Home} />
+      <Route path="/payment" exact component={Payment} />
+    </React.Fragment>
+  </Router>,
+  document.getElementById("root")
+);
 registerServiceWorker();
-
